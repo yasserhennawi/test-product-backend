@@ -19,29 +19,7 @@ abstract class Product {
     public function __construct($db) {
         $this->conn = $db;
     }
-    public function read() {
-        // query
-        $query = "SELECT 
-                    SKU,
-                    name,
-                    type,
-                    price, 
-                    height, 
-                    length, 
-                    width, 
-                    weight, 
-                    size 
-                FROM $this->table
-                
-        ";
-
-        // prepare statement
-        $stmt = $this->conn->prepare($query);
-
-        // excute query
-        $stmt->execute();
-
-        return $stmt;
-    }
+    abstract public function read();
     abstract protected function create();
+    abstract protected function delete($SKUs);
 }

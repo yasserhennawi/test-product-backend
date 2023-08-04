@@ -1,6 +1,27 @@
 <?php
 include_once "./Product.php";
+include_once "./CreateProduct.php";
 class DVD extends Product {
+    // get all books
+    public function read() {
+        // query
+        $query = "SELECT 
+                    SKU,
+                    name,
+                    type,
+                    price, 
+                    size
+                FROM $this->table WHERE type = 'DVD' ;
+                
+        ";
+        // prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // excute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 
     // create product
     public function create() {
@@ -41,5 +62,8 @@ class DVD extends Product {
                 return true;
             }
         }
+    }
+    // Delete multiple values
+    public function delete($SKUs) {
     }
 }

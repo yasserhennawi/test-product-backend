@@ -2,6 +2,26 @@
 include_once "./Product.php";
 class Book extends Product {
 
+    // get all books
+    public function read() {
+        // query
+        $query = "SELECT 
+                    SKU,
+                    name,
+                    type,
+                    price, 
+                    weight
+                FROM $this->table WHERE type = 'Book' ;
+                
+        ";
+        // prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // excute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 
     // create product
     // Create Post
@@ -43,5 +63,8 @@ class Book extends Product {
                 return true;
             }
         }
+    }
+    // Delete multiple values
+    public function delete($SKUs) {
     }
 }

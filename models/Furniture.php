@@ -1,6 +1,29 @@
 <?php
 include_once "./Product.php";
+include_once "./CreateProduct.php";
 class Furniture extends Product {
+
+    public function read() {
+        // query
+        $query = "SELECT 
+                    SKU,
+                    name,
+                    type,
+                    price, 
+                    width,
+                    height,
+                    length
+                FROM $this->table WHERE type = 'Furniture';
+                
+        ";
+        // prepare statement
+        $stmt = $this->conn->prepare($query);
+
+        // excute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 
 
     // create product
@@ -49,5 +72,8 @@ class Furniture extends Product {
                 return true;
             }
         }
+    }
+    // Delete multiple values
+    public function delete($SKUs) {
     }
 }
