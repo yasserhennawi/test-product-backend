@@ -22,16 +22,14 @@ include_once "./model/Product.php";
 include_once "./config/DotEnv.php";
 
 
-// // Retrive env variable
-(new DotEnv("./config/.env"))->load();
 
 
 // instantiat database and connect
 $methodType = $_SERVER['REQUEST_METHOD'];
 $requestUrl = $_SERVER['REQUEST_URI'];
+ // instantiat Product 
 
-// // instantiat Product 
-$database = new Database(getenv('HOST'), getenv('DB_NAME'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+$database = new Database("sql309.byethost7.com", "b7_34813050_testcase", "b7_34813050", "r40ct2ks");
 $databaseConnection = $database->connect();
 $product = new ProductMySQLRepository($databaseConnection);
 $type = new ProductTypeMySQLRepository($databaseConnection);
