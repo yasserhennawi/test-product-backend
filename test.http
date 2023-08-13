@@ -1,8 +1,0 @@
-POST "http://localhost/api/api/product/product.php" HTTP/1.1
-Content-Type: application/json
-{
-    "SKU":"SKU",
-    "name":"name",
-    "price":1,
-    "type_name":"type"
-}

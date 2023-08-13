@@ -1,12 +1,19 @@
 <?php
+
+
 class Database {
     // DB Params
-    private $host = 'localhost';
-    private $db_name = 'my_products';
-    private $username = 'alaa';
-    private $password = 'Mo_Amer1996';
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
     private $conn;
-
+    public function __construct($host, $db_name, $username, $password) {
+        $this->host = $host;
+        $this->db_name = $db_name;
+        $this->username = $username;
+        $this->password = $password;
+    }
     // DB Connect
     public function connect() {
         $this->conn = null;
